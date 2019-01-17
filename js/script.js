@@ -22,35 +22,27 @@ const shirtColor = document.getElementById('color');
 const allColors = document.getElementById('colors-js-puns');
 
 // hide shirt colors and Color: label if no theme is selected
-allColors.style.display = 'none';
+$('#colors-js-puns').hide();
 
 // show only appropriate colors if one of the two theme options is selected. if not keep in display: none
-shirtDesign.addEventListener('change', (event) => {
+$('#design').change(function(event) {
     if (event.target.value === 'js puns') {
-        allColors.style.display = '';
-        for (let i=0; i<shirtColor.length; i++) {
-            let chosenColors = shirtColor.options[i].value;
-            if (chosenColors === 'tomato' || chosenColors === 'steelblue' || chosenColors === 'dimgrey') {
-                shirtColor.options[i].remove();
-                i--;
-            }
-        }
+        $('#colors-js-puns').show();
+        $('#color option[value="cornflowerblue"]').show()
+        $('#color option[value="darkslategrey"]').show()
+        $('#color option[value="gold"]').show()
+        $('#color option[value="tomato"]').hide()
+        $('#color option[value="steelblue"]').hide()
+        $('#color option[value="dimgrey"]').hide()
     } else if (event.target.value === 'heart js') {
-        allColors.style.display = '';
-        for (let i=0; i<shirtColor.length; i++) {
-            let chosenColors = shirtColor.options[i].value;
-            if (chosenColors === 'cornflowerblue' || chosenColors === 'darkslategrey' || chosenColors === 'gold') {
-                shirtColor.options[i].remove();
-                i--;
-            }
-        }
+        $('#colors-js-puns').show();
+        $('#color option[value="cornflowerblue"]').hide()
+        $('#color option[value="darkslategrey"]').hide()
+        $('#color option[value="gold"]').hide()
+        $('#color option[value="tomato"]').show()
+        $('#color option[value="steelblue"]').show()
+        $('#color option[value="dimgrey"]').show()
     } else {
-        allColors.style.display = 'none';
+        $('#colors-js-puns').hide();
     }
 });
-
-// so far, can hide the colors completely and when neither of the two themes are selected, its hidden again.
-// also, able to display colors to each theme.
-
-// TO FIX: currently when page loads, depending on which theme is selected, the respective colors show. however, after a theme is chosen, 
-//         when you select another theme, no colors show. they are blank. 
