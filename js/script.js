@@ -17,9 +17,6 @@ jobRoles.addEventListener('change', (event) => {
 });
 
 //t-shirt section ************************************************************************
-const shirtDesign = document.getElementById('design');
-const shirtColor = document.getElementById('color');
-const allColors = document.getElementById('colors-js-puns');
 
 // hide shirt colors and Color: label if no theme is selected
 $('#colors-js-puns').hide();
