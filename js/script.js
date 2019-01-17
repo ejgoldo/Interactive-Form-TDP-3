@@ -28,20 +28,20 @@ $('#colors-js-puns').hide();
 $('#design').change(function(event) {
     if (event.target.value === 'js puns') {
         $('#colors-js-puns').show();
-        $('#color option[value="cornflowerblue"]').show()
-        $('#color option[value="darkslategrey"]').show()
-        $('#color option[value="gold"]').show()
-        $('#color option[value="tomato"]').hide()
-        $('#color option[value="steelblue"]').hide()
-        $('#color option[value="dimgrey"]').hide()
+        $('#color option[value="cornflowerblue"]').attr('selected', true).show()
+        $('#color option[value="darkslategrey"]').attr('selected', true).show()
+        $('#color option[value="gold"]').attr('selected', true).show()
+        $('#color option[value="tomato"]').attr('hidden', true).hide()
+        $('#color option[value="steelblue"]').attr('hidden', true).hide()
+        $('#color option[value="dimgrey"]').attr('hidden', true).hide()
     } else if (event.target.value === 'heart js') {
         $('#colors-js-puns').show();
-        $('#color option[value="cornflowerblue"]').hide()
-        $('#color option[value="darkslategrey"]').hide()
-        $('#color option[value="gold"]').hide()
-        $('#color option[value="tomato"]').show()
-        $('#color option[value="steelblue"]').show()
-        $('#color option[value="dimgrey"]').show()
+        $('#color option[value="cornflowerblue"]').attr('hidden', true).hide()
+        $('#color option[value="darkslategrey"]').attr('hidden', true).hide()
+        $('#color option[value="gold"]').attr('hidden', true).hide()
+        $('#color option[value="tomato"]').attr('selected', true).show()
+        $('#color option[value="steelblue"]').attr('selected', true).show()
+        $('#color option[value="dimgrey"]').attr('selected', true).show()
     } else {
         $('#colors-js-puns').hide();
     }
