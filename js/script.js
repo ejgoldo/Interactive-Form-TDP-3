@@ -28,21 +28,25 @@ $('#colors-js-puns').hide();
 $('#design').change(function(event) {
     if (event.target.value === 'js puns') {
         $('#colors-js-puns').show();
-        $('#color option[value="cornflowerblue"]').attr('selected', true).show()
-        $('#color option[value="darkslategrey"]').attr('selected', true).show()
-        $('#color option[value="gold"]').attr('selected', true).show()
-        $('#color option[value="tomato"]').attr('hidden', true).hide()
-        $('#color option[value="steelblue"]').attr('hidden', true).hide()
-        $('#color option[value="dimgrey"]').attr('hidden', true).hide()
+        $('#color option[value="cornflowerblue"]').attr('selected', true).attr('hidden', false)
+        $('#color option[value="darkslategrey"]').attr('hidden', false)
+        $('#color option[value="gold"]').attr('hidden', false)
+        $('#color option[value="tomato"]').attr('selected', false).attr('hidden', true)
+        $('#color option[value="steelblue"]').attr('hidden', true)
+        $('#color option[value="dimgrey"]').attr('hidden', true)
     } else if (event.target.value === 'heart js') {
         $('#colors-js-puns').show();
-        $('#color option[value="cornflowerblue"]').attr('hidden', true).hide()
-        $('#color option[value="darkslategrey"]').attr('hidden', true).hide()
-        $('#color option[value="gold"]').attr('hidden', true).hide()
-        $('#color option[value="tomato"]').attr('selected', true).show()
-        $('#color option[value="steelblue"]').attr('selected', true).show()
-        $('#color option[value="dimgrey"]').attr('selected', true).show()
+        $('#color option[value="cornflowerblue"]').attr('selected', false).attr('hidden', true)
+        $('#color option[value="darkslategrey"]').attr('hidden', true)
+        $('#color option[value="gold"]').attr('hidden', true)
+        $('#color option[value="tomato"]').attr('selected', true).attr('hidden', false)
+        $('#color option[value="steelblue"]').attr('hidden', false)
+        $('#color option[value="dimgrey"]').attr('hidden', false)
     } else {
         $('#colors-js-puns').hide();
     }
 });
+
+// register for activities section ************************************************************************
+
+
