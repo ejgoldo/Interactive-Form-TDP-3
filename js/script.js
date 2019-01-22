@@ -16,6 +16,7 @@ jobRoles.addEventListener('change', (event) => {
     }
 });
 
+
 //t-shirt section ************************************************************************
 
 // hide shirt colors and Color: label if no theme is selected
@@ -44,16 +45,42 @@ $('#design').change(function(event) {
     }
 });
 
+
 // register for activities section ************************************************************************
 
 // if an option is checked by user, other conflicting objects with same time are disabled. if unclicked, option becomes available once more
 $('.activities').change(function() {
-    // JS Frameworks Worksho selected, Express Workshop disabled
+    // JS Frameworks Workshop selected, Express Workshop disabled
     if ($('input[name="js-frameworks"]').prop('checked')) {
         $('input[name="express"]').attr('disabled', true)
         $('input[name="express"]').parent().addClass('disable') 
     } else {
         $('input[name="express"]').removeAttr('disabled')
         $('input[name="express"]').parent().removeClass('disable') 
+    }
+    // Express Workshop selected, JS Frameworks Workshop disabled
+    if ($('input[name="express"]').prop('checked')) {
+        $('input[name="js-frameworks"]').attr('disabled', true)
+        $('input[name="js-frameworks"]').parent().addClass('disable') 
+    } else {
+        $('input[name="js-frameworks"]').removeAttr('disabled')
+        $('input[name="js-frameworks"]').parent().removeClass('disable') 
+    }
+
+    // Javascript Libraries Workshop selected, Node.js Workshop disabled
+    if ($('input[name="js-libs"]').prop('checked')) {
+        $('input[name="node"]').attr('disabled', true)
+        $('input[name="node"]').parent().addClass('disable') 
+    } else {
+        $('input[name="node"]').removeAttr('disabled')
+        $('input[name="node"]').parent().removeClass('disable') 
+    }
+    // Node.js Workshop selected, Javascript Libraries Workshop disabled
+    if ($('input[name="node"]').prop('checked')) {
+        $('input[name="js-libs"]').attr('disabled', true)
+        $('input[name="js-libs"]').parent().addClass('disable') 
+    } else {
+        $('input[name="js-libs"]').removeAttr('disabled')
+        $('input[name="js-libs"]').parent().removeClass('disable') 
     }
 }); 
