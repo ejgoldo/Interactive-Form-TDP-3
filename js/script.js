@@ -46,4 +46,14 @@ $('#design').change(function(event) {
 
 // register for activities section ************************************************************************
 
-
+// if an option is checked by user, other conflicting objects with same time are disabled. if unclicked, option becomes available once more
+$('.activities').change(function() {
+    // JS Frameworks Worksho selected, Express Workshop disabled
+    if ($('input[name="js-frameworks"]').prop('checked')) {
+        $('input[name="express"]').attr('disabled', true)
+        $('input[name="express"]').parent().addClass('disable') 
+    } else {
+        $('input[name="express"]').removeAttr('disabled')
+        $('input[name="express"]').parent().removeClass('disable') 
+    }
+}); 
