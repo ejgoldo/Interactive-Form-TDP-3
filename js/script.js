@@ -84,3 +84,39 @@ $('.activities').change(function() {
         $('input[name="js-libs"]').parent().removeClass('disable') 
     }
 }); 
+
+// price total based on selections will appear right under the activities checkbox
+
+$('.activities').append('<h3 class="total">Total price: $0</h3>');
+
+$('.activities').on('click', function() {
+    let price = 0
+    if ($('input[name="all"]').prop('checked')) {
+        price += 200;
+    }
+
+    if ($('input[name="js-frameworks"]').prop('checked')) {
+        price += 100;
+    }
+    if ($('input[name="js-libs"]').prop('checked')) {
+        price += 100;
+    }
+    if ($('input[name="express"]').prop('checked')) {
+        price += 100;
+    }
+    if ($('input[name="node"]').prop('checked')) {
+        price += 100;
+    }
+    if ($('input[name="build-tools"]').prop('checked')) {
+        price += 100;
+    }
+    if ($('input[name="npm"]').prop('checked')) {
+        price += 100;
+    }
+
+    $('.total').html("Total price: $" + price);
+});
+
+
+// payment info section ************************************************************************
+
