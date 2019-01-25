@@ -120,3 +120,37 @@ $('.activities').on('click', function() {
 
 // payment info section ************************************************************************
 
+// hide select payment method option from the dropdown since credit card is the default option
+$('#payment option[value="select_method"]').hide();
+$('#payment option[value="credit card"]').attr('selected', '');
+
+// adding ID's paypal and bitcoin to respective divs
+const paypal = $('#credit-card').next();
+const bitcoin = $('#credit-card').next().next();
+
+// also hide the Paypal and Bitcoin payment options since Credit card is the default selection.
+// also create variable with function that will display the selected option and hide the rest
+paypal.hide();
+bitcoin.hide();
+
+const newPayment = function(paymentSelected) {
+    $('#credit-card').hide();
+    $(paypal).hide();
+    $(bitcoin).hide();
+    $(paymentSelected).show();
+  }
+
+// function with switch statement to display the correct info based on user selection
+  $('#payment').on('change', function() {
+    switch ($('#payment').val()) {
+      case 'credit card':
+        newPayment($('#credit-card'));
+        break;
+      case 'paypal':
+        newPayment(paypal);
+        break;
+      case 'bitcoin':
+        newPayment(bitcoin);
+        break;
+    }
+  });
