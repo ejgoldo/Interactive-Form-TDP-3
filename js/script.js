@@ -159,24 +159,41 @@ const newPayment = function(paymentSelected) {
 // form validation ************************************************************************
 
 // name and email validation
-$('#name').on('input', function(name) {
+function name() {
     let nameInput = $(this);
     let nameVal = nameInput.val();
     if (nameVal) {
         nameInput.css('border', '2px solid green');
+        $('#name').prev().text("Name:").show();
+        $('#name').prev().css('color', 'black');
     } else {
-        nameInput.css('border', '2px solid red')
+        nameInput.css('border', '2px solid red');
+        nameInput.attr('placeholder', "Please enter your name.");
+        $('#name').prev().text("Name: \(Name must be entered\)").show();
+        $('#name').prev().css('color', 'red');
     }
-});
+}
+$('#name').on('input', name);
 
-$('#mail').on('input', function(email) {
+function email() {
     let emailInput=$(this);
 	let corrEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 	let emailVal = corrEmail.test(emailInput.val());
 	if (emailVal) {
         emailInput.css('border', '2px solid green');
+        $('#mail').prev().text("Email:").show();
+        $('#mail').prev().css('color', 'black');
     } else {
         emailInput.css('border', '2px solid red');
+        emailInput.attr('placeholder', "Please enter a valid email address.")
+        $('#mail').prev().text("Email: \(Email must be entered in the correct format\)").show();
+        $('#mail').prev().css('color', 'red');
     }
-});
+}
+$('#mail').on('input', email);
 
+
+// require at least one checkbox to be checked
+function oneCheck () {
+    
+}
