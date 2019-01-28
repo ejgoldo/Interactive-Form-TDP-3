@@ -195,5 +195,13 @@ $('#mail').on('input', email);
 
 // require at least one checkbox to be checked
 function oneCheck () {
-    
+    if ($('input:checkbox:checked').length > 0) {
+        $('.activities legend').css('color', 'black');
+        $('.activities legend').text('Register for Activities');
+    } else {
+        $('.activities legend').css('color', 'red');
+        $('.activities legend').text('Register for Activities - please select at least 1 activity from the list');
+    }
 }
+$('.activities').change(oneCheck);
+
