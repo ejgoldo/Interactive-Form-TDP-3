@@ -154,3 +154,29 @@ const newPayment = function(paymentSelected) {
         break;
     }
   });
+
+
+// form validation ************************************************************************
+
+// name and email validation
+$('#name').on('input', function(name) {
+    let nameInput = $(this);
+    let nameVal = nameInput.val();
+    if (nameVal) {
+        nameInput.css('border', '2px solid green');
+    } else {
+        nameInput.css('border', '2px solid red')
+    }
+});
+
+$('#mail').on('input', function(email) {
+    let emailInput=$(this);
+	let corrEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+	let emailVal = corrEmail.test(emailInput.val());
+	if (emailVal) {
+        emailInput.css('border', '2px solid green');
+    } else {
+        emailInput.css('border', '2px solid red');
+    }
+});
+
