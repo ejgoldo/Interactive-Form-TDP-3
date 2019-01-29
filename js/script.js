@@ -253,3 +253,27 @@ function zipCode () {
     }
 }
 $('#zip').on('input', zipCode);
+
+// cvv code 
+function cvvCode () {
+    let needCVV = /^\d{3}$/.test($('#cvv').val());
+    if (needCVV === false) {
+        $('#cvv').prev().css('color', 'red').css('font-size', '.8em');
+        if ($('#cvv').val() === '') {
+            $('#cvv').prev().text("CVV: - Please enter your credit card security code.").show();
+        } else {
+            ('#cvv').prev().text("CVV: - Your CVV should be 3 digits long.").show();
+        }
+        return false;
+    } else {
+        $('#cvv').prev().text('CVV:');
+        $('#cvv').prev().css('color', 'black').css('font-size', 'initial');
+        return true;
+    }
+}
+$('#cvv').on('input', cvvCode);
+
+
+// form validation at submission ************************************************************************
+
+
