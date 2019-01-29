@@ -228,11 +228,28 @@ function ccNumber () {
             return false;
         } else {
             $('#cc-num').prev().text('Card Number:');
-            $('#cc-num').prev().css('color', 'black');
+            $('#cc-num').prev().css('color', 'black').css('font-size', 'initial');
             return true;
         }
     }
 }
 $('#cc-num').on('input', ccNumber);
 
-
+// zip code
+function zipCode () {
+    let needZip = /^\d{5}$/.test($('#zip').val());
+    if (needZip === false) {
+        $('#zip').prev().css('color', 'red').css('font-size', '.8em');
+        if ($('#zip').val() === '') {
+            $('#zip').prev().text("Zip Code: - Please enter your zip code").show();
+        } else {
+            ('#zip').prev().text("Zip Code: - Your zip code must be 5 digits long.").show();
+        }
+        return false;
+    } else {
+        $('#zip').prev().text('Zip Code:');
+        $('#zip').prev().css('color', 'black').css('font-size', 'initial');
+        return true;
+    }
+}
+$('#zip').on('input', zipCode);
