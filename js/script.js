@@ -166,11 +166,13 @@ function name() {
         nameInput.css('border', '2px solid green');
         $('#name').prev().text("Name:").show();
         $('#name').prev().css('color', 'black');
+        return true;
     } else {
         nameInput.css('border', '2px solid red');
         nameInput.attr('placeholder', "Please enter your name.");
         $('#name').prev().text("Name: \(Name must be entered\)").show();
         $('#name').prev().css('color', 'red');
+        return false;
     }
 }
 $('#name').on('input', name);
@@ -183,11 +185,13 @@ function email() {
         emailInput.css('border', '2px solid green');
         $('#mail').prev().text("Email:").show();
         $('#mail').prev().css('color', 'black');
+        return true;
     } else {
         emailInput.css('border', '2px solid red');
         emailInput.attr('placeholder', "Please enter a valid email address.")
         $('#mail').prev().text("Email: \(Email must be entered in the correct format\)").show();
         $('#mail').prev().css('color', 'red');
+        return false;
     }
 }
 $('#mail').on('input', email);
@@ -198,10 +202,37 @@ function oneCheck () {
     if ($('input:checkbox:checked').length > 0) {
         $('.activities legend').css('color', 'black');
         $('.activities legend').text('Register for Activities');
+        return true;
     } else {
         $('.activities legend').css('color', 'red');
         $('.activities legend').text('Register for Activities - please select at least 1 activity from the list');
+        return false;
     }
 }
 $('.activities').change(oneCheck);
+
+
+// Credit card: make sure each option in credit card is entered or selected
+
+// cc number
+function ccNumber () {
+    if ($('#payment option:selected').val() === 'credit card') {
+        let ccVal = /^\d{13,16}$/.test($('#cc-num').val());
+        if (ccVal === false) {
+            $('#cc-num').prev().css('color', 'red').css('font-size', '.8em');
+            if ($('#cc-num').val() === '') {
+                $('#cc-num').prev().text("Card Number: - Please enter your card number").show();
+            } else {
+                ('#cc-num').prev().text("Card Number: - Please enter a credit card number that is between 13 and 16 digits long.").show();
+            }
+            return false;
+        } else {
+            $('#cc-num').prev().text('Card Number:');
+            $('#cc-num').prev().css('color', 'black');
+            return true;
+        }
+    }
+}
+$('#cc-num').on('input', ccNumber);
+
 
