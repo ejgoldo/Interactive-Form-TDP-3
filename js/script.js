@@ -220,10 +220,9 @@ function ccNumber () {
         let ccVal = /^\d{13,16}$/.test($('#cc-num').val());
         if (ccVal === false) {
             $('#cc-num').prev().css('color', 'red').css('font-size', '.8em');
+            $('#cc-num').prev().text("Card Number: - Please enter a credit card number that is between 13 and 16 digits long").show();
             if ($('#cc-num').val() === '') {
                 $('#cc-num').prev().text("Card Number: - Please enter your card number").show();
-            } else {
-                ('#cc-num').prev().text("Card Number: - Please enter a credit card number that is between 13 and 16 digits long.").show();
             }
             return false;
         } else {
@@ -241,9 +240,9 @@ function zipCode () {
     if (needZip === false) {
         $('#zip').prev().css('color', 'red').css('font-size', '.8em');
         if ($('#zip').val() === '') {
-            $('#zip').prev().text("Zip Code: - Please enter your zip code").show();
+            $('#zip').prev().text("Zip Code: - Your zip code must be 5 digits long.").show();
         } else {
-            ('#zip').prev().text("Zip Code: - Your zip code must be 5 digits long.").show();
+            ('#zip').prev().text("Zip Code: - Please enter your zip code").show();
         }
         return false;
     } else {
@@ -260,9 +259,9 @@ function cvvCode () {
     if (needCVV === false) {
         $('#cvv').prev().css('color', 'red').css('font-size', '.8em');
         if ($('#cvv').val() === '') {
-            $('#cvv').prev().text("CVV: - Please enter your credit card security code.").show();
+            $('#cvv').prev().text("CVV: - Your CVV should be 3 digits long.").show();
         } else {
-            ('#cvv').prev().text("CVV: - Your CVV should be 3 digits long.").show();
+            ('#cvv').prev().text("CVV: - Please enter your credit card security code.").show();
         }
         return false;
     } else {
