@@ -4,6 +4,8 @@ nameFocus.focus();
 
 // job role section ************************************************************************
 // other-title entered into HTML and hidden unless Other is selected
+$('#title option[value="other-title"]').remove();
+
 const otherTitle = document.getElementById('other-title');
 otherTitle.style.display = 'none';
 
@@ -53,35 +55,35 @@ $('.activities').change(function() {
     // JS Frameworks Workshop selected, Express Workshop disabled
     if ($('input[name="js-frameworks"]').prop('checked')) {
         $('input[name="express"]').attr('disabled', true)
-        $('input[name="express"]').parent().addClass('disable') 
+        $('input[name="express"]').parent().addClass('disable').css('background-color', 'grey') 
     } else {
         $('input[name="express"]').removeAttr('disabled')
-        $('input[name="express"]').parent().removeClass('disable') 
+        $('input[name="express"]').parent().removeClass('disable').css('background-color', 'initial') 
     }
     // Express Workshop selected, JS Frameworks Workshop disabled
     if ($('input[name="express"]').prop('checked')) {
         $('input[name="js-frameworks"]').attr('disabled', true)
-        $('input[name="js-frameworks"]').parent().addClass('disable') 
+        $('input[name="js-frameworks"]').parent().addClass('disable').css('background-color', 'grey')  
     } else {
         $('input[name="js-frameworks"]').removeAttr('disabled')
-        $('input[name="js-frameworks"]').parent().removeClass('disable') 
+        $('input[name="js-frameworks"]').parent().removeClass('disable').css('background-color', 'initial')  
     }
 
     // Javascript Libraries Workshop selected, Node.js Workshop disabled
     if ($('input[name="js-libs"]').prop('checked')) {
         $('input[name="node"]').attr('disabled', true)
-        $('input[name="node"]').parent().addClass('disable') 
+        $('input[name="node"]').parent().addClass('disable').css('background-color', 'grey')  
     } else {
         $('input[name="node"]').removeAttr('disabled')
-        $('input[name="node"]').parent().removeClass('disable') 
+        $('input[name="node"]').parent().removeClass('disable').css('background-color', 'initial')  
     }
     // Node.js Workshop selected, Javascript Libraries Workshop disabled
     if ($('input[name="node"]').prop('checked')) {
         $('input[name="js-libs"]').attr('disabled', true)
-        $('input[name="js-libs"]').parent().addClass('disable') 
+        $('input[name="js-libs"]').parent().addClass('disable').css('background-color', 'grey')  
     } else {
         $('input[name="js-libs"]').removeAttr('disabled')
-        $('input[name="js-libs"]').parent().removeClass('disable') 
+        $('input[name="js-libs"]').parent().removeClass('disable').css('background-color', 'initial')  
     }
 }); 
 
@@ -271,22 +273,21 @@ $('#cvv').on('input', cvvCode);
 // form validation at submission ************************************************************************
 
 $('form').on('submit', function(event) {
-    // runs all validation functions above at submission
-    name();
-    email();
-    oneCheck();
-    ccNumber();
-    zipCode();
-    cvvCode();
+    let result = true;
+    result = result && name();
+    result = result && email();
+    result = result && oneCheck();
+    if($('#payment option:selected').val() === 'credit card') {
+        result = result && ccNumber();
+        result = result && zipCode();
+        result = result && cvvCode();
+    } else {
+        return;
+    }
 
-    if (
-        name() === false ||
-        email() === false ||
-        oneCheck() === false ||
-        ccNumber() === false ||
-        zipCode() === false ||
-        cvvCode() === false
-    ) {
+    if (!result) {
         event.preventDefault();
+        $('#name').focus();
+        alert('Please complete the form completely and correctly.');
     }
 });
