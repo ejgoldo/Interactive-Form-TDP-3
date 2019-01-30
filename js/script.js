@@ -239,11 +239,10 @@ function zipCode () {
     let needZip = /^\d{5}$/.test($('#zip').val());
     if (needZip === false) {
         $('#zip').prev().css('color', 'red').css('font-size', '.8em');
+        $('#zip').prev().text("Zip Code: - Your zip code must be 5 digits long.").show();
         if ($('#zip').val() === '') {
-            $('#zip').prev().text("Zip Code: - Your zip code must be 5 digits long.").show();
-        } else {
-            ('#zip').prev().text("Zip Code: - Please enter your zip code").show();
-        }
+            $('#zip').prev().text("Zip Code: - Please enter your zip code").show();
+        } 
         return false;
     } else {
         $('#zip').prev().text('Zip Code:');
@@ -258,11 +257,10 @@ function cvvCode () {
     let needCVV = /^\d{3}$/.test($('#cvv').val());
     if (needCVV === false) {
         $('#cvv').prev().css('color', 'red').css('font-size', '.8em');
+        $('#cvv').prev().text("CVV: - Your CVV should be 3 digits long.").show();
         if ($('#cvv').val() === '') {
-            $('#cvv').prev().text("CVV: - Your CVV should be 3 digits long.").show();
-        } else {
-            ('#cvv').prev().text("CVV: - Please enter your credit card security code.").show();
-        }
+            $('#cvv').prev().text("CVV: - Please enter your credit card security code.").show();
+        } 
         return false;
     } else {
         $('#cvv').prev().text('CVV:');
@@ -275,4 +273,23 @@ $('#cvv').on('input', cvvCode);
 
 // form validation at submission ************************************************************************
 
+$('button[type="submit"]').on('submit', function(event) {
+    // runs all validation functions above at submission
+    name();
+    email();
+    oneCheck();
+    ccNumber();
+    zipCode();
+    cvvCode();
 
+    if (
+        name() === false ||
+        email() === false ||
+        oneCheck() === false ||
+        ccNumber() === false ||
+        zipCode() === false ||
+        cvvCode() === false
+    ) {
+        event.preventDefault();
+    }
+});
