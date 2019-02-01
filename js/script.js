@@ -281,8 +281,6 @@ $('form').on('submit', function(event) {
         result = result && ccNumber();
         result = result && zipCode();
         result = result && cvvCode();
-    } else {
-        return;
     }
 
     if (!result) {
