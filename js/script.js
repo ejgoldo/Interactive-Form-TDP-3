@@ -286,6 +286,5 @@ $('form').on('submit', function(event) {
     if (!result) {
         event.preventDefault();
         $('#name').focus();
-        alert('Please complete the form completely and correctly.');
     }
 });
