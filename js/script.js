@@ -283,8 +283,9 @@ $('form').on('submit', function(event) {
         result = result && cvvCode();
     }
 
+    // if there are errors, page reloads to top of the page and displays which field is wrong
     if (!result) {
-        event.preventDefault();
+        event.preventDefault(); 
         $('#name').focus();
     }
 });
